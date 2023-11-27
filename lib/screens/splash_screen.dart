@@ -41,7 +41,7 @@ class _SpalshScreenState extends State<SplashScreen> with SingleTickerProviderSt
         width:double.infinity,
         decoration: const BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.blue, Colors.purple],
+            colors: [Color.fromARGB(255, 2, 37, 4), Color.fromARGB(255, 3, 146, 8)],
             begin: Alignment.topRight,
             end: Alignment.bottomLeft,
           ),
@@ -59,7 +59,7 @@ class _SpalshScreenState extends State<SplashScreen> with SingleTickerProviderSt
               'Attendance Management',
               style: TextStyle(
                 color:Colors.white,
-                fontSize: 32,
+                fontSize: 30,
               ),
             )
           ],

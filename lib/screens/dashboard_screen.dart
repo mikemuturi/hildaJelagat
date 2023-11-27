@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:my_attendance/screens/checkin_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({Key? key}) : super(key: key);
@@ -84,7 +85,11 @@ class _DashboardScreen extends State<DashboardScreen> {
                         const SizedBox(height: 20.0),
                         ElevatedButton(
                           onPressed: () {
-                            // Handle button press event
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => CheckInScreen()),
+                            );
                           },
                           child: const Text('Clock In'),
                         ),
@@ -102,15 +107,16 @@ class _DashboardScreen extends State<DashboardScreen> {
                     color: Colors.white,
                     child: ListView(
                       children: const [
-                        Text('Recent Check-In Data',
-                        textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 24,
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold,
-                              fontFamily: 'Tw Cent MT',
-                            ),
-                            ),
+                        Text(
+                          'Recent Check-In Data',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            fontSize: 24,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                            fontFamily: 'Tw Cent MT',
+                          ),
+                        ),
                         ListTile(
                           title: Text('Item 1'),
                         ),
