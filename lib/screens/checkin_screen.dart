@@ -10,7 +10,7 @@ class CheckInScreen extends StatefulWidget {
 class _CheckInScreen extends State<CheckInScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  
+  TextEditingController _location
 
   @override
   Widget build(BuildContext context) {
