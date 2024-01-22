@@ -163,7 +163,6 @@ Future<void> _getCurrentPostion() async{
                   return null;
                 },
               ),
-              
               const SizedBox(height: 32),
               ElevatedButton(
                 onPressed: _getCurrentPostion,

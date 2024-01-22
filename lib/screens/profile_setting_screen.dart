@@ -1,97 +1,94 @@
 import 'package:flutter/material.dart';
+// import 'package:image/picker.dart';
+import 'dart:io';
+import 'package:image_picker/image_picker.dart';
 
 
-class ProfileSettingScreen extends StatefulWidget {
-  const ProfileSettingScreen({Key? key}) : super(key: key);
-
-  @override
-  State<ProfileSettingScreen> createState() => _ProfileSettingScreen();
+void main() {
+  runApp(const MyApp());
 }
 
-class _ProfileSettingScreen extends State<ProfileSettingScreen> {
+class MyApp extends StatelessWidget{
+  const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: Stack(
-                children: [
-                  //widget
-                  greenWidget(context),
-
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: Container(
-                        width: 180,
-                        height: 180,
-                        margin: EdgeInsets.only(bottom: 20),
-                        decoration: const BoxDecoration(
-                            shape: BoxShape.circle, color: Colors.grey),
-                        child: const Center(
-                          child: Icon(Icons.camera_alt_outlined,
-                              size: 40, color: Colors.white),
-                        )),
-                  )
-                ],
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(70),
-              alignment: Alignment.center,
-              child: MaterialButton(
-                height: 50,
-                shape: RoundedRectangleBorder(
-                  borderRadius:BorderRadius.circular(5) 
-                  ),
-                color: Colors.green,
-                child: const Text(
-                  'Upload',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                onPressed: () {},
-              ),
-            )
-          ],
-        ),
-      ),
+  Widget build(BuildContext context){
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: ImagePickerScreen(),
     );
   }
 }
 
-Widget greenWidget(BuildContext context) {
-  return Container(
-      width: MediaQuery.of(context).size.width,
-      decoration: const BoxDecoration(
-        // image: DecorationImage(
-        //   image:AssetImage('assets/konza.png'),
-        //   fit: BoxFit.fill
-        //    ),
-        color: Colors.green,
+
+class ImagePickerScreen extends StatefulWidget {
+  const ImagePickerScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ImagePickerScreen> createState() => _ImagePickerScreenState();
+}
+
+class _ImagePickerScreenState extends State<ImagePickerScreen> {
+  XFile? image;
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text('Face Recognition'),
       ),
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: Container(
-        height: MediaQuery.of(context).size.height * 0.1,
-        width: MediaQuery.of(context).size.width,
-        margin:
-            EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.05),
-        child: const Center(
-          child: Text(
-            "Image Upload",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 24,
-            ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton.icon(
+                onPressed: () async {
+                  final ImagePicker _picker = ImagePicker();
+                  final img =
+                      await _picker.pickImage(source: ImageSource.gallery);
+                  setState(() {
+                    image = img;
+                  });
+                },
+                label: const Text('Choose Image'),
+                icon: const Icon(Icons.image),
+              ),
+              ElevatedButton.icon(
+                onPressed: () async {
+                  final ImagePicker _picker = ImagePicker();
+                  final img =
+                      await _picker.pickImage(source: ImageSource.camera);
+                  setState(() {
+                    image = img;
+                  });
+                },
+                label: const Text('Take Photo'),
+                icon: const Icon(Icons.camera_alt_outlined),
+              ),
+            ],
           ),
-        ),
-      ));
+          if (image != null)
+            Expanded(
+              child: Column(
+                children: [
+                  Expanded(child: Image.file(File(image!.path))),
+                  ElevatedButton.icon(
+                    onPressed: () {
+                      setState(() {
+                        image = null;
+                      });
+                    },
+                    label: const Text('Upload'),
+                    icon: const Icon(Icons.upload_outlined),
+                  )
+                ],
+              ),
+            )
+          else
+            const SizedBox(),
+        ],
+      ),
+    );
+  }
 }

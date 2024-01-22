@@ -1,7 +1,7 @@
 // ignore_for_file: use_build_context_synchronously
 
 import 'dart:convert';
-import 'dart:ffi';
+// import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:my_attendance/screens/dashboard_screen.dart';
@@ -33,13 +33,9 @@ class _LoginScreen extends State<LoginScreen> {
 
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
-        print(data['token']);
 
         var is_employee = data['user']['is_employee'];
-        print('$is_employee');
-
-        if (is_employee == 'true') {
-       
+        if (is_employee == true) {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const DashboardScreen()),
@@ -49,7 +45,7 @@ class _LoginScreen extends State<LoginScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ProfileSettingScreen()),
+            MaterialPageRoute(builder: (context) => const ImagePickerScreen()),
           );
           print('profile not created');
         }
@@ -69,127 +65,140 @@ class _LoginScreen extends State<LoginScreen> {
         centerTitle: true,
       ),
       body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.only(top: 30),
-                child: Center(
-                  child: Container(
-                    width: 120,
-                    height: 120,
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(40)),
-                    child: Image.asset('assets/images/logo.png'),
+        child: Card(
+          elevation: 0,
+        shape:  const RoundedRectangleBorder(
+          side: BorderSide(
+            color: Color.fromARGB(255, 54, 54, 54),
+          ),
+          borderRadius: BorderRadius.all(Radius.circular(12))),
+          child: SizedBox(
+            width: 300,
+          height: 500,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.only(top: 30),
+                    child: Center(
+                      child: Container(
+                        // width: 120,
+                        // height: 120,
+                        decoration:
+                            BoxDecoration(borderRadius: BorderRadius.circular(40)),
+                        child: Image.asset('assets/images/logo.png'),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(12),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: TextFormField(
-                          controller: usernameController,
-                          decoration: const InputDecoration(
-                            hintText: 'Username',
-                            labelText: 'Username',
-                            icon: Icon(Icons.email),
-                            errorStyle: TextStyle(fontSize: 18),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(9))),
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Username';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(12),
-                        child: TextFormField(
-                          controller: passwordController,
-                          decoration: const InputDecoration(
-                            hintText: 'Passowrd',
-                            labelText: 'Enter Password',
-                            icon: Icon(Icons.email),
-                            errorStyle: TextStyle(fontSize: 18),
-                            border: OutlineInputBorder(
-                                borderSide: BorderSide(color: Colors.red),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(9))),
-                          ),
-                          validator: (value) {
-                            if (value!.isEmpty) {
-                              return 'Enter password';
-                            }
-                            return null;
-                          },
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(28.0),
-                        //   child: Container(
-                        //     width: MediaQuery.of(context).size.width,
-                        //     height: 50,
-                        //     child: ElevatedButton(
-                        //       child: const Text(
-                        //         'Login',
-                        //         style:
-                        //             TextStyle(color: Colors.white, fontSize: 22),
-                        //       ),
-                        //       onPressed: () {
-                        //         if (_formKey.currentState!.validate()) {
-                        //           print('form submiitted');
-                        //           // login(usernameController.text.toString(), passwordController.text.toString());
-
-                        //           Navigator.push(
-                        //             context,
-                        //             MaterialPageRoute(
-                        //                 builder: (context) =>
-                        //                     const DashboardScreen()),
-                        //           );
-                        //         }
-                        //       },
-                        //       // shape: RoundedRectangleBorder(
-                        //       //     borderRadius: BorderRadius.circular(30)),
-                        //       // color: Colors.blue,
-                        //     ),
-                        //   ),
-                        child: GestureDetector(
-                          onTap: () {
-                            //login();
-                            //print('Login username: $username');
-
-                            login(usernameController.text.toString(),
-                                passwordController.text.toString());
-                          },
-                          child: Container(
-                            height: 50,
-                            decoration: BoxDecoration(
-                                color: Colors.green,
-                                borderRadius: BorderRadius.circular(10)),
-                            child: const Center(
-                              child: Text('Login'),
+                  Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: Form(
+                      key: _formKey,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: TextFormField(
+                              controller: usernameController,
+                              decoration: const InputDecoration(
+                                hintText: 'Username',
+                                labelText: 'Username',
+                                icon: Icon(Icons.email),
+                                errorStyle: TextStyle(fontSize: 18),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.red),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(9))),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Username';
+                                }
+                                return null;
+                              },
                             ),
                           ),
-                        ),
-                        //   ],
-                        // ),
+                          Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: TextFormField(
+                              controller: passwordController,
+                              decoration: const InputDecoration(
+                                hintText: 'Passowrd',
+                                labelText: 'Enter Password',
+                                icon: Icon(Icons.lock),
+                                errorStyle: TextStyle(fontSize: 18),
+                                border: OutlineInputBorder(
+                                    borderSide: BorderSide(color: Colors.red),
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(9))),
+                              ),
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'Enter password';
+                                }
+                                return null;
+                              },
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(28.0),
+                            //   child: Container(
+                            //     width: MediaQuery.of(context).size.width,
+                            //     height: 50,
+                            //     child: ElevatedButton(
+                            //       child: const Text(
+                            //         'Login',
+                            //         style:
+                            //             TextStyle(color: Colors.white, fontSize: 22),
+                            //       ),
+                            //       onPressed: () {
+                            //         if (_formKey.currentState!.validate()) {
+                            //           print('form submiitted');
+                            //           // login(usernameController.text.toString(), passwordController.text.toString());
+            
+                            //           Navigator.push(
+                            //             context,
+                            //             MaterialPageRoute(
+                            //                 builder: (context) =>
+                            //                     const DashboardScreen()),
+                            //           );
+                            //         }
+                            //       },
+                            //       // shape: RoundedRectangleBorder(
+                            //       //     borderRadius: BorderRadius.circular(30)),
+                            //       // color: Colors.blue,
+                            //     ),
+                            //   ),
+                            child: GestureDetector(
+                              onTap: () {
+                                //login();
+                                //print('Login username: $username');
+            
+                                login(usernameController.text.toString(),
+                                    passwordController.text.toString());
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 40,
+                                decoration: BoxDecoration(
+                                    color: Colors.green,
+                                    borderRadius: BorderRadius.circular(10)),
+                                child: const Center(
+                                  child: Text('Login'),
+                                ),
+                              ),
+                            ),
+                            //   ],
+                            // ),
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
-                ),
-              ),
-            ]),
+                ]),
+          ),
+        ),
       ),
     );
   }

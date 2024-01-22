@@ -44,9 +44,9 @@ class _HomeScreen extends State<HomeScreen> {
             tabBackgroundColor: Colors.grey,
             gap: 20,
             iconSize: 24,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
           
-            tabs: [
+            tabs: const [
               GButton(
                 icon: Icons.dashboard, 
                 text: 'Dashboard'
