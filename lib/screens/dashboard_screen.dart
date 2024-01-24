@@ -3,9 +3,11 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:my_attendance/screens/checkin_screen.dart';
+import 'package:my_attendance/screens/create_task.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+
+  DashboardScreen({Key? key,}) : super(key: key);
 
   @override
   State<DashboardScreen> createState() => _DashboardScreen();
@@ -88,7 +90,7 @@ class _DashboardScreen extends State<DashboardScreen> {
                             Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) => CheckInScreen()),
+                                  builder: (context) => CreateTask()),
                             );
                           },
                           child: const Text('Clock In'),
@@ -118,7 +120,13 @@ class _DashboardScreen extends State<DashboardScreen> {
                           ),
                         ),
                         ListTile(
-                          title: Text('Item 1'),
+                          title: Column(
+                            children: [
+                              // Text($location),
+                              // Text($description),
+                              // Text($notes),
+                            ],
+                          )
                         ),
                         ListTile(
                           title: Text('Item 2'),

@@ -38,7 +38,7 @@ class _LoginScreen extends State<LoginScreen> {
         if (is_employee == true) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const DashboardScreen()),
+            MaterialPageRoute(builder: (context) =>  DashboardScreen()),
           );
 
           print('profile created');
@@ -61,20 +61,10 @@ class _LoginScreen extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        title: const Text('Attendance'),
         centerTitle: true,
       ),
       body: Center(
-        child: Card(
-          elevation: 0,
-        shape:  const RoundedRectangleBorder(
-          side: BorderSide(
-            color: Color.fromARGB(255, 54, 54, 54),
-          ),
-          borderRadius: BorderRadius.all(Radius.circular(12))),
-          child: SizedBox(
-            width: 300,
-          height: 500,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -142,50 +132,30 @@ class _LoginScreen extends State<LoginScreen> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsets.all(28.0),
-                            //   child: Container(
-                            //     width: MediaQuery.of(context).size.width,
-                            //     height: 50,
-                            //     child: ElevatedButton(
-                            //       child: const Text(
-                            //         'Login',
-                            //         style:
-                            //             TextStyle(color: Colors.white, fontSize: 22),
-                            //       ),
-                            //       onPressed: () {
-                            //         if (_formKey.currentState!.validate()) {
-                            //           print('form submiitted');
-                            //           // login(usernameController.text.toString(), passwordController.text.toString());
-            
-                            //           Navigator.push(
-                            //             context,
-                            //             MaterialPageRoute(
-                            //                 builder: (context) =>
-                            //                     const DashboardScreen()),
-                            //           );
-                            //         }
-                            //       },
-                            //       // shape: RoundedRectangleBorder(
-                            //       //     borderRadius: BorderRadius.circular(30)),
-                            //       // color: Colors.blue,
-                            //     ),
-                            //   ),
-                            child: GestureDetector(
-                              onTap: () {
-                                //login();
-                                //print('Login username: $username');
-            
-                                login(usernameController.text.toString(),
-                                    passwordController.text.toString());
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                height: 40,
-                                decoration: BoxDecoration(
-                                    color: Colors.green,
-                                    borderRadius: BorderRadius.circular(10)),
-                                child: const Center(
-                                  child: Text('Login'),
+                            padding:  const EdgeInsets.all(20),
+                            child: Align(
+                              alignment: Alignment.center,
+                              child: FractionallySizedBox(
+                                widthFactor: 0.5,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    //login();
+                                    //print('Login username: $username');
+                                    login(usernameController.text.toString(),
+                                        passwordController.text.toString());
+                                  },
+                                  child: Center(
+                                    child: Container(
+                                      alignment: Alignment.center,
+                                      height: 40,
+                                      decoration: BoxDecoration(
+                                          color: Colors.green,
+                                          borderRadius: BorderRadius.circular(10)),
+                                      child: const Center(
+                                        child: Text('Login'),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -198,8 +168,6 @@ class _LoginScreen extends State<LoginScreen> {
                   ),
                 ]),
           ),
-        ),
-      ),
-    );
+      );
   }
 }

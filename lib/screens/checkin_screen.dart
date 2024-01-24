@@ -170,6 +170,7 @@ Future<void> _getCurrentPostion() async{
               ),
               const SizedBox(height: 20.0),
               ElevatedButton(
+              child: const Text('Clock In'),
                 onPressed: () {
                   // It returns true if the form is valid, otherwise returns false
                   if (_formKey.currentState!.validate()) {
@@ -184,8 +185,7 @@ Future<void> _getCurrentPostion() async{
 
                   //String locationValue = _locationController.text;
                   //print("Location: $locationValue");
-                },
-                child: const Text('Clock In'),
+                }
               ),
             ],
           ),

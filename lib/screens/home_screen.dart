@@ -5,7 +5,7 @@ import 'package:my_attendance/screens/insights_Screen.dart';
 import 'package:my_attendance/screens/profile_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key?key}):super(key:key);
+  const HomeScreen( {Key?key}):super(key:key);
 
   @override
   State<HomeScreen> createState() => _HomeScreen();
@@ -15,7 +15,7 @@ class _HomeScreen extends State<HomeScreen> {
 
   int _selectedindex=0;
 
-  static const List<Widget> _widgetoptions =<Widget>[
+  static  List<Widget> _widgetoptions =<Widget>[
     DashboardScreen(),
     InsightsScreen(),
     ProfileScreen(),
@@ -34,7 +34,7 @@ class _HomeScreen extends State<HomeScreen> {
         color: Colors.green,
         child:  Padding(
           padding: const EdgeInsets.symmetric(
-            horizontal: 20 , 
+            horizontal: 20 ,
             vertical: 12
           ),
           child: GNav(
@@ -45,10 +45,9 @@ class _HomeScreen extends State<HomeScreen> {
             gap: 20,
             iconSize: 24,
             padding: const EdgeInsets.all(16),
-          
             tabs: const [
               GButton(
-                icon: Icons.dashboard, 
+                icon: Icons.dashboard,
                 text: 'Dashboard'
               ),
               GButton(

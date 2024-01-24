@@ -31,14 +31,10 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
     body: Center(
-          child: Column(
-            children: [
-              LoadingAnimationWidget.staggeredDotsWave(
+          child: LoadingAnimationWidget.staggeredDotsWave(
                 color: const Color.fromARGB(255, 40, 170, 0),
                 size: 200,
               ),
-            ],
-          ),
     )
       );
   }
