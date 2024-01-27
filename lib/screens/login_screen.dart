@@ -45,7 +45,7 @@ class _LoginScreen extends State<LoginScreen> {
         } else {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const ImagePickerScreen()),
+            MaterialPageRoute(builder: (context) => const Setting()),
           );
           print('profile not created');
         }

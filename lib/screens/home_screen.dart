@@ -15,10 +15,10 @@ class _HomeScreen extends State<HomeScreen> {
 
   int _selectedindex=0;
 
-  static  List<Widget> _widgetoptions =<Widget>[
+  static  final List<Widget> _widgetoptions =<Widget>[
     DashboardScreen(),
-    InsightsScreen(),
-    ProfileScreen(),
+    const InsightsScreen(),
+    const ProfileScreen(),
   ];
 
 

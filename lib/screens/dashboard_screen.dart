@@ -14,21 +14,6 @@ class DashboardScreen extends StatefulWidget {
 }
 
 class _DashboardScreen extends State<DashboardScreen> {
-  var _currentTime = '';
-  void _updateTime() {
-    setState(() {
-      _currentTime = DateFormat('hh:mm:ss').format(DateTime.now());
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _updateTime();
-    Timer.periodic(const Duration(seconds: 1), (timer) {
-      _updateTime();
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,15 +60,6 @@ class _DashboardScreen extends State<DashboardScreen> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          'Current Time: $_currentTime',
-                          style: const TextStyle(
-                            color: Colors.green,
-                            fontSize: 35,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: 'TW Cen MT',
-                          ),
-                        ),
                         const SizedBox(height: 20.0),
                         ElevatedButton(
                           onPressed: () {

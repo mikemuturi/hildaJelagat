@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_attendance/date.dart';
 import 'package:my_attendance/screens/create_task.dart';
+import 'package:my_attendance/screens/login_screen.dart';
+import 'package:my_attendance/screens/profile_setting_screen.dart';
 import 'package:my_attendance/screens/splash_screen.dart';
 import 'package:my_attendance/testfile.dart';
+import 'package:my_attendance/time.dart';
+import 'package:my_attendance/updated.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +17,9 @@ class MyApp extends StatelessWidget{
 
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
+    return   const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home:ImagePickerScreen(),
+      home:  Setting(),
     );
   }
 }
