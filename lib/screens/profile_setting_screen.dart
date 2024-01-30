@@ -82,12 +82,12 @@ class _SettingState extends State<Setting> {
             const Text("Developer"),
             const Divider(
             ),
-            SizedBox(height: 30,),
+            const SizedBox(height: 30,),
             ItemProfile("Employee No", "KNDC/22200888", CupertinoIcons.person),
-             SizedBox(height: 15,),
-             ItemProfile("Department", "ICT", CupertinoIcons.folder_circle_fill),
-              SizedBox(height: 15,),
-               ItemProfile("Availability", "No", CupertinoIcons.phone),
+            const SizedBox(height: 15,),
+            ItemProfile("Department", "ICT", CupertinoIcons.folder_circle_fill),
+              const SizedBox(height: 15,),
+              ItemProfile("Availability", "No", CupertinoIcons.phone),
 
                           ],
             ),

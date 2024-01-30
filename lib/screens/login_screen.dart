@@ -38,7 +38,7 @@ class _LoginScreen extends State<LoginScreen> {
         if (is_employee == true) {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) =>  DashboardScreen()),
+            MaterialPageRoute(builder: (context) =>  Setting()),
           );
 
           print('profile created');
